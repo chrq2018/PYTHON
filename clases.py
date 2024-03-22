@@ -26,15 +26,16 @@ class Empleado():
         self.sueldo = sueldo
         self.comision = comision
         
-    def venderProducto(self, objectProducto):
-        self.comision = self.comision + objectProducto.precio * 0.1
+    def venderProducto(self, Producto):
+        self.comision = self.comision + Producto.precio * 0.1
                
-class Cordinador(Empleado):
-    def _init_(self, nombre, apellido, dni, sueldo, comision):
+class Coordinador(Empleado):
+    def _init_(self, nombre, apellido, dni, sueldo):
         super()._init_(nombre, apellido, dni, sueldo, comision)
+       
         
     def Coordinar(self):
-        print("Estoy cordinando")
+        print("Estoy coordinando")
     
 class Mostrador(Empleado):
     def _init_(self, nombre, apellido, dni, sueldo, comision, caja):
