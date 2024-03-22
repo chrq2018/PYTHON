@@ -28,8 +28,7 @@ class Empleado():
         
     def venderProducto(self, objectProducto):
         self.comision = self.comision + objectProducto.precio * 0.1
-        
-        
+               
 class Cordinador(Empleado):
     def _init_(self, nombre, apellido, dni, sueldo, comision):
         super()._init_(nombre, apellido, dni, sueldo, comision)
