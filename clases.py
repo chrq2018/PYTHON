@@ -18,36 +18,44 @@ class ArtJardin(Producto):
         super()._init_(nombre, precio)
         self.usoProfesional = usoProfesional
 
-class Empleado():
-    def _init_(self, nombre, apellido, dni, sueldo, comision):
+class Empleado:
+    def __init__(self, nombre, apellido, dni, sueldo):
         self.nombre = nombre
         self.apellido = apellido
         self.dni = dni
         self.sueldo = sueldo
-        self.comision = comision
-        
-    def venderProducto(self, Producto):
-        self.comision = self.comision + Producto.precio * 0.1
-               
-class Coordinador(Empleado):
-    def _init_(self, nombre, apellido, dni, sueldo):
-        super()._init_(nombre, apellido, dni, sueldo, comision)
+        self.comision = 0
+
+    def vender_articulo(self):
+        self.comision = self.calcular_comision(self.precio)
        
-        
-    def Coordinar(self):
-        print("Estoy coordinando")
     
-class Mostrador(Empleado):
-    def _init_(self, nombre, apellido, dni, sueldo, comision, caja):
-        super()._init_(nombre, apellido, dni, sueldo, comision)
-        self.caja = caja
-        
-    def cobrar(self, objectProducto):
-        self.caja = self.caja + objectProducto.precio
+    def calcular_comision(self):
+        self.comision = self.sueldo * 0.10
+        return self.comision
     
-class Repositor(Empleado):
-    def _init_(self, nombre, apellido, dni, sueldo, comision):
-        super()._init_(nombre, apellido, dni, sueldo, comision)
+class Coordinador(Empleado):
+    def __init__(self, nombre, apellido, dni, sueldo):
+        super().__init__(nombre, apellido, dni, sueldo)
+        self.comision = 0
+
+    def coordinar_trabajo(self):
+        print("Estoy coordinando el trabajo")
+
+class Empleado_mostrador(Empleado):
+    def __init__(self, nombre, apellido, dni, sueldo):
+        super().__init__(nombre, apellido, dni, sueldo)
+        self.comision = 0
+        self.caja = 0
+    
+    def cobrar(self):
+        self.caja += self.sueldo 
         
-    def irDeposito(self):
-        print("Estoy yendo al deposito")
+    
+class Empleado_repositor(Empleado):
+    def __init__(self, nombre, apellido, dni, sueldo):
+        super().__init__(nombre, apellido, dni, sueldo)
+        self.comision = 0
+
+    def ir_deposito_mercaderia(self):
+        print("Estoy yendo al deposito de mercaderias")
